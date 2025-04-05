@@ -30,3 +30,18 @@ main {
 main:has(.back-link) {
   text-align: center;
 }
+/* #region my base*/
+body {
+  background-color: rgb(200, 200, 200);
+  background: linear-gradient(
+    -45deg,
+    rgb(128, 128, 128),
+    rgb(231, 231, 231),
+    rgb(78, 117, 255),
+    rgb(108, 140, 255)
+  );
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  animation: lgradient 13s ease infinite;
+}
+/* #endregion */

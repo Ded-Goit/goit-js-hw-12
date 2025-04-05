@@ -1,18 +1,20 @@
-@keyframes slide {
-  from {
-    transform: translateX(-140%) translateY(-50%);
+@keyframes lgradient {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    transform: translateX(-104%) translateY(-50%);
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
-@keyframes stretch {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(100%) scale(0.2);
+
+@keyframes animFw {
+  0% {
+    width: 0;
   }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(100%) scale(1);
+  100% {
+    width: 100%;
   }
 }

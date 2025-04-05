@@ -42,3 +42,59 @@
 .nav-link.active::after {
   background: #747bff;
 }
+/* #region my header*/
+.nav-logo:hover {
+  background-color: rgb(108, 140, 255);
+  border-radius: 8px;
+  box-shadow: inset #fff3 8px 8px 18px 5px,
+    inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
+}
+.form {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  max-width: 360px;
+  padding: 8px 16px;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: inset #fff3 8px 8px 18px 5px,
+    inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
+}
+input {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: rgb(128, 128, 128);
+  width: 272px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  padding-left: 8px;
+}
+input:hover {
+  border-color: #000;
+}
+input:active {
+  color: #2e2f42;
+  border-color: #4e75ff;
+}
+.form button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border-radius: 8px;
+  width: 75px;
+  height: 40px;
+  background: rgb(78, 117, 255);
+  box-shadow: inset #fff3 8px 8px 18px 5px,
+    inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
+}
+.form button:hover {
+  background: #6c8cff;
+}
+/* #endregion */

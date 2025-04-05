@@ -2,21 +2,160 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./img/panorama.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Image Search</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-
+    <!-- #region header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a
+            class="nav-logo"
+            href="https://github.com/Ded-Goit"
+            target="_blank"
+          >
+            <img
+              src="./img/webp/dedlogo.png"
+              alt="DED Logo"
+              width="100"
+              height="50"
+            />
+          </a>
+          <form class="form">
+            <label>
+              <input
+                type="text"
+                name="search-text"
+                placeholder="Search images..."
+                required
+              />
+            </label>
+            <button type="submit">Search</button>
+          </form>
+        </nav>
+      </div>
+    </header>
+    <!-- #endregion -->
+    <!-- #region main -->
     <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
+      <span class="loader hidden"></span>
+      <ul class="gallery"></ul>
+      <article class="badges">
+        <div class="container">
+          <ul class="badges-list">
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://axios-http.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Axios
+              </a>
+            </li>
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://pixabay.com/api/docs/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Pixabay
+              </a>
+            </li>
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://github.com/marcelodolza/iziToast"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                iziToast
+              </a>
+            </li>
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://github.com/andreknieriem/simplelightbox"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SimpleLightbox
+              </a>
+            </li>
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://github.com/vineethtrv/css-loader"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Css-loader
+              </a>
+            </li>
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://www.npmjs.com/package/vite-plugin-html-inject"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                HTML Inject
+              </a>
+            </li>
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://www.npmjs.com/package/vite-plugin-full-reload"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Full Reload
+              </a>
+            </li>
+            <li class="badges-item">
+              <a
+                class="badges-link"
+                href="https://www.npmjs.com/package/postcss-sort-media-queries"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sort Media Queries
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
     </main>
-
-    <load src="./partials/footer.html" />
+    <!-- #endregion -->
+    <!-- #region footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-desc">
+          Made with
+          <a
+            class="footer-link"
+            href="https://github.com/Ded-Goit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DED </a
+          >and ✨ by
+          <a
+            class="footer-link"
+            href="https://goit.global/ua/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GoIT team
+          </a>
+        </p>
+      </div>
+    </footer>
+    <!-- #endregion -->
 
     <script type="module" src="./main.js"></script>
   </body>
