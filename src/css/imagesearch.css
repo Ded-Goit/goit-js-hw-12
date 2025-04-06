@@ -90,4 +90,18 @@
 .iziToast-wrapper {
   top: 80px;
 }
+.gallery-button {
+  color: #fff;
+  border-radius: 8px;
+  width: 60%;
+  height: 40px;
+  margin: 1% 20%;
+  background: rgb(78, 117, 255);
+  box-shadow: inset #fff3 8px 8px 18px 5px,
+    inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
+}
+.gallery-button:hover {
+  background: #6c8cff;
+}
+
 /* #endregion */

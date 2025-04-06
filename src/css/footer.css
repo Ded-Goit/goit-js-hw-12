@@ -10,12 +10,20 @@
 .footer-link::before {
   content: '';
   position: absolute;
-  bottom: 6%;
+  bottom: 1%;
   left: 50%;
   transform: translateX(-50%) skewX(-12deg);
-  z-index: -1;
-  width: 110%;
-  height: 24%;
-  background-color: #41d1ff;
+  z-index: 1;
+  width: 116%;
+  height: 12%;
+  background-color: rgb(78, 117, 255);
   transition: 200ms ease;
+}
+/* #region my footer*/
+.footer-link:hover {
+  border: 1px solid rgb(96, 96, 96);
+  background-color: rgb(108, 140, 255);
+  border-radius: 4px;
+  box-shadow: inset #fff3 8px 8px 18px 5px,
+    inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
 }

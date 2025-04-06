@@ -50,6 +50,11 @@
     inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
 }
 .form {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   display: flex;
   gap: 8px;
   justify-content: center;
@@ -61,17 +66,14 @@
     inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
 }
 input {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
   color: rgb(128, 128, 128);
   width: 272px;
   height: 36px;
   border-radius: 4px;
   border: 1px solid #808080;
   padding-left: 8px;
+  box-shadow: inset rgb(128, 128, 128) 2px 2px 8px 2px,
+    inset #fff -2px -2px 8px 4px;
 }
 input:hover {
   border-color: #000;
@@ -81,11 +83,7 @@ input:active {
   border-color: #4e75ff;
 }
 .form button {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
   color: #fff;
   border-radius: 8px;
   width: 75px;
