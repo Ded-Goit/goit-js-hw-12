@@ -50,7 +50,7 @@
   gap: 24px;
   padding: 0;
   max-width: 1136px;
-  margin: 32px auto;
+  margin: 0 auto;
 }
 
 .gallery-item {
@@ -90,7 +90,7 @@
 .iziToast-wrapper {
   top: 80px;
 }
-.gallery-button {
+/*.gallery-button {
   color: #fff;
   border-radius: 8px;
   width: 60%;
@@ -102,6 +102,49 @@
 }
 .gallery-button:hover {
   background: #6c8cff;
+}*/
+.gallery-button {
+  position: relative;
+  appearance: none;
+  background: rgb(78, 117, 255);
+  padding: 1px 2px;
+  border: 1px solid #808080;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 100px;
+  text-align: center;
+  box-shadow: inset #fff3 8px 8px 18px 5px,
+    inset hsla(0, 0%, 0%, 0.502) -8px -8px 18px 5px;
+
+  span {
+    position: relative;
+    pointer-events: none;
+  }
+
+  &::before {
+    --size: 0;
+
+    content: '';
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(
+      circle closest-side,
+      hsl(227, 100%, 71%),
+      transparent
+    );
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+  }
+
+  &:hover::before {
+    --size: 400px;
+  }
 }
 
 /* #endregion */
