@@ -1,5 +1,17 @@
+// Import the SimpleLightbox library to create a modal image window
+import SimpleLightbox from 'simplelightbox';
+// Import the styles for SimpleLightbox
+import 'simplelightbox/dist/simple-lightbox.min.css';
 // Get a reference to the gallery container from the DOM
 const gallery = document.querySelector('.gallery');
+
+const loader = document.querySelector('.loader');
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionSelector: 'img',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
 // Function to create and display image gallery
 export function createGallery(images) {
   // Generate HTML markup for each image
@@ -29,8 +41,8 @@ export function createGallery(images) {
     )
     .join('');
   // Add the generated markup to the gallery container
-  gallery.innerHTML = markup;
-  /*lightbox.refresh(); // Update the SimpleLightbox instance for new gallery items*/
+  gallery.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh(); // Update the SimpleLightbox instance for new gallery items
 }
 // Function to clear the gallery
 export function clearGallery() {
@@ -45,4 +57,10 @@ export function showLoader() {
 export function hideLoader() {
   /*console.log(' hide Loader');*/
   document.querySelector('.loader').classList.add('hidden');
+}
+export function showLoadMoreButton() {
+  document.querySelector(`.gallery-button`).classList.remove('hidden');
+}
+export function hideLoadMoreButton() {
+  document.querySelector(`.gallery-button`).classList.add('hidden');
 }
