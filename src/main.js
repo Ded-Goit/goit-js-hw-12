@@ -89,6 +89,7 @@ function smoothScroll() {
     behavior: 'smooth',
   });
 }
+// cod for button load more
 document.querySelector('.gallery-button').onmousemove = e => {
   const x = e.pageX - e.target.offsetLeft;
   const y = e.pageY - e.target.offsetTop;
