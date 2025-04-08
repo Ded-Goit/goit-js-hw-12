@@ -11,6 +11,8 @@ import {
   hideLoader,
   showLoadMoreButton,
   hideLoadMoreButton,
+  showMoreLoader,
+  hideMoreLoader,
 } from './js/render-functions';
 
 const loadMoreBtn = document.querySelector('.gallery-button');
@@ -46,6 +48,7 @@ loadMoreBtn.addEventListener('click', async () => {
 
 async function fetchImages() {
   showLoader();
+  showMoreLoader();
   // Make a GET request to Pixabay API with the required parameters
   try {
     const data = await getImagesByQuery(currentQuery, currentPage);
@@ -77,19 +80,19 @@ async function fetchImages() {
     });
   } finally {
     hideLoader(); // Hide the loading indicator regardless of the result
+    hideMoreLoader();
   }
 }
-
 function smoothScroll() {
-  const { heigth: cardHeight } = document
+  const cardHeight = document
     .querySelector('.gallery-item')
-    .getBoundingClientRect();
+    .getBoundingClientRect().height;
   window.scrollBy({
     top: cardHeight * 2,
     behavior: 'smooth',
   });
 }
-// cod for button load more
+// style for button load more
 document.querySelector('.gallery-button').onmousemove = e => {
   const x = e.pageX - e.target.offsetLeft;
   const y = e.pageY - e.target.offsetTop;

@@ -1,4 +1,6 @@
-# 🎴Пошук зображень через Pixabay API
+# 🎴Пошук зображень через Pixabay API [рефакторинг коду](https://github.com/Ded-Goit/goit-js-hw-11).
+
+
 
 Цей проект дозволяє користувачам шукати зображення за допомогою
 [Pixabay API.](https://pixabay.com/api/docs/). Результати відображатися як

@@ -4,8 +4,8 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 // Get a reference to the gallery container from the DOM
 const gallery = document.querySelector('.gallery');
-
 const loader = document.querySelector('.loader');
+const loadermore = document.querySelector('.loader-more');
 const lightbox = new SimpleLightbox('.gallery a', {
   captionSelector: 'img',
   captionsData: 'alt',
@@ -51,12 +51,22 @@ export function clearGallery() {
 // Function to show the loading indicator
 export function showLoader() {
   /*console.log(' show Loader');*/
-  document.querySelector('.loader').classList.remove('hidden');
+  loader.classList.remove('hidden');
 }
 // Function to hide the loading indicator
 export function hideLoader() {
-  /*console.log(' hide Loader');*/
-  document.querySelector('.loader').classList.add('hidden');
+  console.log('hide Loader');
+  loader.classList.add('hidden');
+}
+// Function to show the loading indicator more load
+export function showMoreLoader() {
+  console.log('show more Loader');
+  loadermore.classList.remove('hidden');
+}
+// Function to hide the loading indicator more load
+export function hideMoreLoader() {
+  console.log('hide more Loader');
+  loadermore.classList.add('hidden');
 }
 export function showLoadMoreButton() {
   document.querySelector(`.gallery-button`).classList.remove('hidden');
@@ -64,3 +74,5 @@ export function showLoadMoreButton() {
 export function hideLoadMoreButton() {
   document.querySelector(`.gallery-button`).classList.add('hidden');
 }
+//console.log(loadermore);
+//console.log(loader);

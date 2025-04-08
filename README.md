@@ -1,4 +1,4 @@
-# 🎴Image Search via Pixabay API
+# 🎴Image Search via Pixabay API[code refactoring](https://github.com/Ded-Goit/goit-js-hw-11)
 
 This project allows users to search for images using
 [Pixabay API.](https://pixabay.com/api/docs/). Results are displayed as a
