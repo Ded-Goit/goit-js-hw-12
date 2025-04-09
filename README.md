@@ -11,15 +11,30 @@ and configure additional features [see documentation](https://vitejs.dev/).
       ✔ The user enters a query into a form.
       ✔ Submitting the form triggers an asynchronous request to the API.
       ✔ If images are found, they are rendered as cards in the gallery.
-      ✔ If not, a warning is displayed.
+      ✔ If no images are found, a notification is displayed.
       ✔ Clicking on an image opens it in a modal window.
+      ✔ There is a Load More button to load the next results (15 images per page).
+      ✔ When the end of the collection is reached, a corresponding message is displayed.
 
       📌 Functionality
-      ✔ Image search by keyword
-      ✔ Gallery view
-      ✔ Lightbox
-      ✔ Error/warning messages
-      ✔ Loader when loading
+      ✔ 🔍 Image search by keyword
+      ✔ 🖼 Display images as a gallery
+      ✔ 💬 Interactive messages using iziToast
+      ✔ 💡 Image caption via alt attribute in modal window
+      ✔ Loader on loading
+      ✔ 🔔 Notification when search results end
+      ✔ 📱 Smooth scrolling after each query
+
+      🧪 Notes and limitations
+      ✔ 🔍 Pixabay free plan limit: up to 5000 queries/hour
+
+      🔑 API Key
+      To use the application, get an API key from Pixabay
+      and paste it into the pixabay-api.js file in the API_KEY variable:
+
+```js
+const API_KEY = 'your-api-key-here';
+```
 
 ## 🔧 Technologies
 
@@ -83,7 +98,25 @@ and configure additional features [see documentation](https://vitejs.dev/).
 
 #### 🔹simplelightbox for beautiful image viewing in a modal window.
 
-👨‍💻 Author: [Ded-goIT] 📅 Date: [31.03.2025]
+## 📦 Installation
+
+###### 1. Clone the repository
+
+`https://github.com/your-username/project-name.git`
+
+###### 2. Change to the project directory
+
+`cd project-name`
+
+###### 3. Install dependencies
+
+`npm install`
+
+###### 4. Start the local server
+
+`npm run dev`
+
+👨‍💻 Author: [Ded-goIT] 📅 Date: [09.04.2025]
 
 ✅ The project was created to practice working with promises and asynchronous
 JavaScript.
