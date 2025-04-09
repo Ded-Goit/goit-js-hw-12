@@ -2,8 +2,9 @@
 import iziToast from 'izitoast';
 // Import styles for iziToast
 import 'izitoast/dist/css/iziToast.min.css';
-// Import the necessary modules and functions
+// Імпортуємо функцію для отримання зображень із Pixabay API
 import { getImagesByQuery } from './js/pixabay-api';
+// Імпортуємо допоміжні функції для роботи з галереєю та інтерфейсом
 import {
   createGallery,
   clearGallery,
@@ -26,11 +27,11 @@ let totalHits = 0; // загальна кількість знайдених з�
 // Add an event handler for the form on the 'submit' event
 form.addEventListener('submit', async event => {
   event.preventDefault(); // Prevent the default form behavior (page reload)
-  // Get the search query value and remove extra spaces
+  // отримуємо пошуковий запит
   const query = event.target.elements['search-text'].value.trim();
   if (query !== currentQuery) {
-    currentQuery = query;
-    currentPage = 1;
+    currentQuery = query; // оновлюємо збережений запит
+    currentPage = 1; // скидаємо сторінку на початок
     clearGallery(); // Clear previous search results
     hideLoadMoreButton(); // ховає кнопку Load More
   }
@@ -40,28 +41,28 @@ form.addEventListener('submit', async event => {
     return;
   }
 
-  await fetchImages({ isLoadMore: false });
+  await fetchImages({ isLoadMore: false }); // викликаємо функцію пошуку (початковий запит)
   form.reset(); // Очищує поле вводу після пошуку
 });
 
 // Обробник кліку на кнопку "Load more"
 loadMoreBtn.addEventListener('click', async () => {
-  currentPage += 1;
-  await fetchImages({ isLoadMore: true });
+  currentPage += 1; // збільшуємо сторінку на 1
+  await fetchImages({ isLoadMore: true }); // викликаємо функцію пошуку (наступна порція)
 });
 
 // Основна функція для отримання зображень із API
 async function fetchImages({ isLoadMore }) {
   if (isLoadMore) {
-    showMoreLoader();
+    showMoreLoader(); // показуємо індикатор під кнопкою (тільки при додатковому запиті)
   } else {
-    showLoader();
+    showLoader(); // показуємо глобальний індикатор (тільки при першому запиті)
   }
 
   // Make a GET request to Pixabay API with the required parameters
   try {
-    const data = await getImagesByQuery(currentQuery, currentPage);
-    totalHits = data.totalHits;
+    const data = await getImagesByQuery(currentQuery, currentPage); //що тут
+    totalHits = data.totalHits; //що тут
 
     if (data.hits.length === 0) {
       // If no images are found, display a warning
@@ -71,16 +72,16 @@ async function fetchImages({ isLoadMore }) {
       });
       return;
     }
-    createGallery(data.hits);
+    createGallery(data.hits); // додаємо зображення до галереї
     if (currentPage * 15 >= totalHits) {
-      hideLoadMoreButton();
+      hideLoadMoreButton(); // якщо досягли кінця — ховаємо кнопку
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
       });
     } else {
-      showLoadMoreButton();
+      showLoadMoreButton(); // якщо є ще зображення — показуємо кнопку
     }
-    smoothScroll();
+    smoothScroll(); // плавно прокручуємо сторінку до нових результатів
   } catch (error) {
     console.error('Error fetching images:', error);
     // In case of an error, display an error message
@@ -89,28 +90,30 @@ async function fetchImages({ isLoadMore }) {
     });
   } finally {
     if (isLoadMore) {
-      hideMoreLoader();
+      hideMoreLoader(); // Hide the moreloading indicator regardless of the result
     } else {
-      hideLoader(); // Hide the loading indicator regardless of the result}
+      hideLoader(); // Hide the loading indicator regardless of the result
     }
   }
 }
-// Плавна прокрутка сторінки
+// Функція плавної прокрутки до нових елементів
 function smoothScroll() {
-  const card = document.querySelector('.gallery-item');
-  if (!card) return;
+  const card = document.querySelector('.gallery-item'); //шукаємо першу карточку галереї
+  if (!card) return; //якщо не знайшли припиняємо виконання функції
 
-  const cardHeight = card.getBoundingClientRect().height;
+  const cardHeight = card.getBoundingClientRect().height; //отримуємо висоту карточки
+  // повільно скролимо на подвійну висоту карточки
   window.scrollBy({
     top: cardHeight * 2,
     behavior: 'smooth',
   });
 }
-// style for button load more
+// Анімація кнопки "Load more" при русі миші
+// Визначаємо позицію курсора відносно кнопки та передаємо у CSS через custom properties
 document.querySelector('.gallery-button').onmousemove = e => {
-  const x = e.pageX - e.target.offsetLeft;
-  const y = e.pageY - e.target.offsetTop;
+  const x = e.pageX - e.target.offsetLeft; // координата X всередині кнопки
+  const y = e.pageY - e.target.offsetTop; // координата Y всередині кнопки
 
-  e.target.style.setProperty('--x', `${x}px`);
+  e.target.style.setProperty('--x', `${x}px`); // передаємо координати як змінні для стилів
   e.target.style.setProperty('--y', `${y}px`);
 };
