@@ -14,41 +14,50 @@ import {
   showMoreLoader,
   hideMoreLoader,
 } from './js/render-functions';
-
+// Отримуємо елемент кнопки "Load more" із DOM
 const loadMoreBtn = document.querySelector('.gallery-button');
 
 // Get a link to the search form from the DOM
 const form = document.querySelector('.form');
-
-let currentQuery = '';
-let currentPage = 1;
-let totalHits = 0;
+// Глобальні змінні для збереження стану
+let currentQuery = ''; // збережене ключове слово пошуку
+let currentPage = 1; // поточна сторінка для пагінації
+let totalHits = 0; // загальна кількість знайдених зображень
 // Add an event handler for the form on the 'submit' event
 form.addEventListener('submit', async event => {
   event.preventDefault(); // Prevent the default form behavior (page reload)
   // Get the search query value and remove extra spaces
-  currentQuery = event.target.elements['search-text'].value.trim();
-  if (!currentQuery) {
+  const query = event.target.elements['search-text'].value.trim();
+  if (query !== currentQuery) {
+    currentQuery = query;
+    currentPage = 1;
+    clearGallery(); // Clear previous search results
+    hideLoadMoreButton(); // ховає кнопку Load More
+  }
+  if (!query) {
     // If the search field is empty, display an error message
     iziToast.error({ message: 'Please enter a search term!' });
     return;
   }
-  currentPage = 1;
-  clearGallery(); // Clear previous search results
-  hideLoadMoreButton();
-  await fetchImages();
-});
-/*console.log(form);*/
 
+  await fetchImages({ isLoadMore: false });
+  form.reset(); // Очищує поле вводу після пошуку
+});
+
+// Обробник кліку на кнопку "Load more"
 loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
-  await fetchImages();
+  await fetchImages({ isLoadMore: true });
 });
-/*console.log(fetchImages());*/
 
-async function fetchImages() {
-  showLoader();
-  showMoreLoader();
+// Основна функція для отримання зображень із API
+async function fetchImages({ isLoadMore }) {
+  if (isLoadMore) {
+    showMoreLoader();
+  } else {
+    showLoader();
+  }
+
   // Make a GET request to Pixabay API with the required parameters
   try {
     const data = await getImagesByQuery(currentQuery, currentPage);
@@ -79,14 +88,19 @@ async function fetchImages() {
       message: 'Something went wrong. Please try again later.',
     });
   } finally {
-    hideLoader(); // Hide the loading indicator regardless of the result
-    hideMoreLoader();
+    if (isLoadMore) {
+      hideMoreLoader();
+    } else {
+      hideLoader(); // Hide the loading indicator regardless of the result}
+    }
   }
 }
+// Плавна прокрутка сторінки
 function smoothScroll() {
-  const cardHeight = document
-    .querySelector('.gallery-item')
-    .getBoundingClientRect().height;
+  const card = document.querySelector('.gallery-item');
+  if (!card) return;
+
+  const cardHeight = card.getBoundingClientRect().height;
   window.scrollBy({
     top: cardHeight * 2,
     behavior: 'smooth',
